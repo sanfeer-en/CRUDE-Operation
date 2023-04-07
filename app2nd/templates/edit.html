@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'retriev.css' %}">
+{% endblock css %}
+
+{% block content %}
+  <div class="d-flex justify-content-center">
+    <form class="card mt-5 p-3" method="post" action="{% url 'update' details.id %}">
+        {% csrf_token %}
+        <div class="form-group pt-5 ">
+    <label for="name">Name</label>
+    <input name="name" type="text" class="form-control" id="name" placeholder="Enter your name" value="{{details.name}}">
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input name="email" type="email" class="form-control" id="email" placeholder="Enter your email" value="{{details.email}}">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input name="city" type="text" class="form-control" id="inputCity" value="{{details.city}}">
+    </div>
+    
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input name="pincode" type="text" class="form-control" id="inputZip" value="{{details.pincode}}">
+    </div>
+  </div>
+   
+  <div class="form-group">
+    <label for="message">Message</label>
+    <textarea name="message" class="form-control" id="message" rows="3" value="{{details.message}}"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword6">Password</label>
+    <input name="password" type="password" id="inputPassword6" class="form-control " aria-describedby="passwordHelpInline" value="{{details.password}}">
+    <small id="passwordHelpInline" class="text-muted">
+      Must be 8-20 characters long.
+    </small>
+  </div>
+  <input type="submit" class="btn btn-primary" name="" id="">
+    </form>
+  </div>
+{% endblock content %}
